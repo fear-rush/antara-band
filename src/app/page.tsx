@@ -89,7 +89,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-lg md:text-xl mb-8 text-foreground/80 leading-relaxed">
-              Antara, meaning "between" in Indonesian, represents the beautiful harmony that exists in our age diversity. 
+              Antara, meaning between in Indonesian, represents the beautiful harmony that exists in our age diversity. 
               With members spanning across generations - from Gen Z to Millennials - we bridge a 10-20 year age gap through our music.
             </p>
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
