@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import { Music, Instagram, Mail} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -8,16 +8,33 @@ import Image from "next/image";
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect for navbar
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
+  useEffect(() => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-    });
-  }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Added type annotation for event
+  const smoothScroll = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetId = (e.target as HTMLAnchorElement).getAttribute("href");
+    const targetElement = targetId ? document.querySelector(targetId) : null;
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+  };
 
   return (
-    <main className="min-h-screen">
-      {/* Navigation */}
+    <main className="min-h-screen scroll-smooth">
       <nav
         className={`fixed w-full z-50 transition-all duration-500 ${
           isScrolled
@@ -27,19 +44,34 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Menu - Responsive for both Desktop and Mobile */}
             <div className="flex justify-center items-center w-full">
               <div className="flex space-x-4 md:space-x-16">
-                <a href="#about" className="nav-link text-sm md:text-lg">
+                <a 
+                  href="#about" 
+                  onClick={smoothScroll} 
+                  className="nav-link text-sm md:text-lg"
+                >
                   About
                 </a>
-                <a href="#members" className="nav-link text-sm md:text-lg">
+                <a 
+                  href="#members" 
+                  onClick={smoothScroll} 
+                  className="nav-link text-sm md:text-lg"
+                >
                   Members
                 </a>
-                <a href="#music" className="nav-link text-sm md:text-lg">
+                <a 
+                  href="#music" 
+                  onClick={smoothScroll} 
+                  className="nav-link text-sm md:text-lg"
+                >
                   Music
                 </a>
-                <a href="#contact" className="nav-link text-sm md:text-lg">
+                <a 
+                  href="#contact" 
+                  onClick={smoothScroll} 
+                  className="nav-link text-sm md:text-lg"
+                >
                   Contact
                 </a>
               </div>
@@ -47,6 +79,7 @@ export default function Home() {
           </div>
         </div>
       </nav>
+
 
       {/* Hero Section */}
       <section className="hero-section">
