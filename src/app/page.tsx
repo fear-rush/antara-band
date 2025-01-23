@@ -184,7 +184,7 @@ export default function Home() {
                 className="text-foreground/80 hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 mb-4 tracking-wider"
               >
                 <Mail className="w-5 h-5" />
-                contact@antaraband.com
+                antarakitaband@gmail.com
               </a>
             </div>
             
