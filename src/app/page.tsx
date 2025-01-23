@@ -199,7 +199,7 @@ export default function Home() {
                   alt={member.name}
                   fill
                   priority
-                  className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110 -rotate-90"
+                  className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 gradient-overlay sm:opacity-0 flex items-end p-8 sm:group-hover:opacity-100 transition-opacity duration-500">
                   <div className="text-white">
