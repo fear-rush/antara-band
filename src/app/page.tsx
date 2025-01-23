@@ -7,7 +7,6 @@ import Image from "next/image";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Handle scroll effect for navbar
   if (typeof window !== "undefined") {
@@ -15,21 +14,6 @@ export default function Home() {
       setIsScrolled(window.scrollY > 50);
     });
   }
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    // Toggle body scroll
-    if (!isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    document.body.style.overflow = 'unset';
-  };
 
   return (
     <main className="min-h-screen">
@@ -43,67 +27,23 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Desktop Menu */}
-            <div className="hidden md:flex justify-center items-center space-x-16 w-full">
-              <a href="#about" className="nav-link">
-                About
-              </a>
-              <a href="#members" className="nav-link">
-                Members
-              </a>
-              <a href="#music" className="nav-link">
-                Music
-              </a>
-              <a href="#contact" className="nav-link">
-                Contact
-              </a>
-            </div>
-
-            {/* Hamburger Menu Button */}
-            <div className="md:hidden ml-auto">
-              <div
-                className={`hamburger ${isMobileMenuOpen ? "open" : ""}`}
-                onClick={toggleMobileMenu}
-              >
-                <div className="bg-white"></div>
-                <div className="bg-white"></div>
-                <div className="bg-white"></div>
+            {/* Menu - Responsive for both Desktop and Mobile */}
+            <div className="flex justify-center items-center w-full">
+              <div className="flex space-x-4 md:space-x-16">
+                <a href="#about" className="nav-link text-sm md:text-lg">
+                  About
+                </a>
+                <a href="#members" className="nav-link text-sm md:text-lg">
+                  Members
+                </a>
+                <a href="#music" className="nav-link text-sm md:text-lg">
+                  Music
+                </a>
+                <a href="#contact" className="nav-link text-sm md:text-lg">
+                  Contact
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${isMobileMenuOpen ? "open" : "closed"}`}>
-          <div className="flex flex-col items-center justify-center h-full space-y-8 bg-secondary/80">
-            <a
-              href="#about"
-              className="nav-link text-2xl"
-              onClick={closeMobileMenu}
-            >
-              About
-            </a>
-            <a
-              href="#members"
-              className="nav-link text-2xl"
-              onClick={closeMobileMenu}
-            >
-              Members
-            </a>
-            <a
-              href="#music"
-              className="nav-link text-2xl"
-              onClick={closeMobileMenu}
-            >
-              Music
-            </a>
-            <a
-              href="#contact"
-              className="nav-link text-2xl"
-              onClick={closeMobileMenu}
-            >
-              Contact
-            </a>
           </div>
         </div>
       </nav>
