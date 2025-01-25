@@ -235,6 +235,13 @@ export default function Home() {
                 <Mail className="w-5 h-5" />
                 antarakitaband@gmail.com
               </a>
+              <a
+                href="mailto:contact@antaraband.com"
+                className="mt-4 text-foreground/80 hover:text-secondary transition-colors flex items-center justify-center md:justify-start gap-2 mb-4 tracking-wider"
+              >
+                <Mail className="w-5 h-5" />
+                muhfiras1@gmail.com
+              </a>
             </div>
 
             {/* Social Media Links */}
